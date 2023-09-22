@@ -1,0 +1,22 @@
+.center{
+    text-align: center;
+    border-top: solid 2.5px red;
+}
+.center h3{
+    color: blue;
+    font-weight: bold;
+}
+.center p{
+    color: black;
+}
+.myButton{
+    border: solid 2px green;
+    background-color: orange;
+    color: black;
+    margin: 5rem 2px 50px 2px;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+}
+footer{
+    margin-top: 50px;
+}
