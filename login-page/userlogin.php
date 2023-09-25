@@ -1,36 +1,41 @@
 
-<?php
+<?
 
 
-$name=$_POST['name'];
-$email= $_POST['email'];
-$phone = $_POST['phone'];
-$city= $_POST['city'];
-$state = $_POST['state'];
-$outlet = $_POST['outlet'];
-$budget = $_POST['budget'];
-$pincode = $_POST['pincode'];
-$password =$_POST['phone'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-$con =@mysqli_connect('localhost','root','','mrftyres');
-$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode',' ','$password')";
+// Create a database connection
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+// Check if the connection was successful
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
+
 $result = mysqli_query($con, $query);
 
-if($result){
-    // echo "data inserted successfully";
-    // header("Location: thanks.html");
+
+// Check if either of the queries was successful
+if ($result && mysqli_num_rows($result) > 0) {
+    echo "Connection is successful saitheja";
+} else {
+    echo "Connection lost";
 }
-else{
-    echo "OOPS somthing went wrong please check amd re-enter details";
-}
 
+// Close the database connection
+// mysqli_close($con);
+echo $city;
 
-?>
-
-<html>
-    <head>
-    <title>MRF Franchise | Registraion </title>
-    <meta charset="utf-8">
+?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
     <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
@@ -40,43 +45,43 @@ else{
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
  
-    <link rel="stylesheet" href="css/animate.css">    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/animate.css">    
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="status.css">
-	<link rel="stylesheet" href="apply.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    
    
-    </head>
-    <body>
-	<div class="wrap">
-        <div class="container">
-          <div class="row justify-content-between">
-              <div class="col d-flex align-items-center">
-              
-              </div>
-              <div class="col d-flex justify-content-end">
-                <div class="social-media">
-                  <p class="mb-0 d-flex">
-                    <a href="externalb41d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                    <a href="externalee9d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                    <a href="external7d60.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                    <a href="external5b88.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-                  </p>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
+</head>
+<body>
+<div class="wrap">
+			<div class="container">
+				<div class="row justify-content-between">
+						<div class="col d-flex align-items-center">
+						
+						</div>
+						<div class="col d-flex justify-content-end">
+							<div class="social-media">
+				    		<p class="mb-0 d-flex">
+				    			<a href="externalb41d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+				    			<a href="externalee9d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+				    			<a href="external7d60.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+				    			<a href="external5b88.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+				    		</p>
+			        </div>
+						</div>
+				</div>
+			</div>
+		</div>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" class="mrf tyres distributorship"width="250" height="80"></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="../images/logo.png" class="mrf tyres distributorship"width="250" height="80"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -92,40 +97,16 @@ else{
 	        </ul>
 	      </div>
 	    </div>
-	  </nav>
+	  </nav> 
 
 
 
-<div class="center">
 
 
 
-<h3> Congratulations !</h3>
-<p> Your Application for Franchise has been successfully<br>
-submitted to us, We will review your application<br>
-and get back to you as soon as possible.<br>
-
-</p>
 
 
-
-<br>
-<br>
-<h3> बधाई हो ! </h3>
-<p>आपका आवेदन सफलतापूर्वक हमारे पास<br>
-जमा हो गया है, हम आपके आवेदन की समीक्षा करेंगे और<br>
-हम जल्द से जल्द आपसे संपर्क करेंगे।<br>
-
-<br><br><br>
-
-<a href="index2.html" class="myButton"> Back to Home Page</a>
-</div>
-
-
-
-      <!-- footer -->
-
-
+      <!-- ||||||||||||footer|||||||||||||||||| -->
       
 <footer class="footer">
 			<div class="container">
@@ -193,6 +174,5 @@ and get back to you as soon as possible.<br>
 			</div>
 		</footer>
     
-
 </body>
-
+</html>
