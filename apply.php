@@ -12,8 +12,8 @@ $budget = $_POST['budget'];
 $pincode = $_POST['pincode'];
 $password =$_POST['phone'];
 
-$con =@mysqli_connect('localhost','root','','mrftyres');
-$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode',' ','$password')";
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode',' ')";
 $result = mysqli_query($con, $query);
 
 if($result){
@@ -29,7 +29,9 @@ else{
 
 <html>
     <head>
-    <title>MRF Franchise | Registraion </title>
+	<meta charset="UTF-8" />
+    <title>user login page</title>
+    <title>MRF Dealership | Apply for MRF Tyres Dealership Application | MRF Dealership  Apply 2023</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
@@ -40,7 +42,8 @@ else{
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
  
-    <link rel="stylesheet" href="css/animate.css">    
+    <link rel="stylesheet" href="css/animate.css">
+    
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -50,49 +53,53 @@ else{
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+   
+
     <link rel="stylesheet" href="status.css">
 	<link rel="stylesheet" href="apply.css">
    
     </head>
     <body>
 	<div class="wrap">
-        <div class="container">
-          <div class="row justify-content-between">
-              <div class="col d-flex align-items-center">
-              
-              </div>
-              <div class="col d-flex justify-content-end">
-                <div class="social-media">
-                  <p class="mb-0 d-flex">
-                    <a href="externalb41d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                    <a href="externalee9d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                    <a href="external7d60.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                    <a href="external5b88.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-                  </p>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+			<div class="container">
+				<div class="row justify-content-between">
+						<div class="col d-flex align-items-center">
+						
+						</div>
+						<div class="col d-flex justify-content-end">
+							<div class="social-media">
+				    		<p class="mb-0 d-flex">
+				    			<a href="externalb41d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+				    			<a href="externalee9d.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+				    			<a href="external7d60.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+				    			<a href="external5b88.html" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+				    		</p>
+			        </div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" class="mrf tyres distributorship"width="250" height="80"></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	        	<li class="nav-item active"><a href="index-2.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	            <li class="nav-item"><a href="index-2.html" class="nav-link">Franchise Opportunities</a></li>
-				<li class="nav-item"><a href="index.html" class="nav-link">Franchise Benefits</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Apply for Franchise</a></li>
-			  <li class="nav-item"><a href="status.html" class="nav-link">Check Status</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        	
+	        	<li class="nav-item"><a href="../index-2.html" class="nav-link">Franchise Opportunities</a></li>
+				<li class="nav-item"><a href="../index-3.html" class="nav-link">Franchise Benefits</a></li>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Apply Online</a></li>
+            <li class="nav-item"><a href="../status.html" class="nav-link">Check Status</a></li>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
+    <!-- END nav -->
 
 
 
@@ -192,7 +199,27 @@ and get back to you as soon as possible.<br>
 				</div>
 			</div>
 		</footer>
-    
+    	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- <script src="js/jquery.min.js"></script> -->
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="external08e7.html"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+
 
 </body>
 
+</html>
