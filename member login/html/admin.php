@@ -1,39 +1,29 @@
 
 <?php
-
-
-$name=$_POST['name'];
-$email= $_POST['email'];
-$phone = $_POST['phone'];
-$city= $_POST['city'];
-$state = $_POST['state'];
-$outlet = $_POST['outlet'];
-$budget = $_POST['budget'];
-$pincode = $_POST['pincode'];
-$password =$_POST['phone'];
-$arr="";
-$application_id = $phone;
-$arr = str_split($application_id,strlen($application_id)/2);  
-$application_id = "MRF-f".date("Ym").$arr[0];
-
+// Connect to the database
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
-$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '','$application_id')";
-$result = mysqli_query($con, $query);
 
-if($result){
-    // echo "data inserted successfully";
-    // header("Location: thanks.html");
-}
-else{
-    echo "OOPS somthing went wrong please check amd re-enter details";
+// Check the connection
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
+// Handle search functionality if provided
+if (isset($_POST['search'])) {
+    $searchTerm = $_POST['search'];
+    // Modify the query to include the search term
+    $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
+    $result = mysqli_query($con, $query);
+} else {
+    // If search is not provided, retrieve all records from registration
+//    echo "search name";
+}
 
 ?>
-
-<html>
-    <head>
-	<meta charset="UTF-8" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
     <title>user login page</title>
     <title>MRF Dealership | Apply for MRF Tyres Dealership Application | MRF Dealership  Apply 2023</title>
     <meta charset="utf-8">
@@ -46,25 +36,45 @@ else{
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
  
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../../css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/flaticon.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+/* a:hover{
    
+color:red;  
+background-color:aqua;
+} */
 
-    <link rel="stylesheet" href="status.css">
-	<link rel="stylesheet" href="apply.css">
-   
-    </head>
-    <body>
-	<div class="wrap">
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+.thead{
+    background-color:aqua;
+}
+.footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+        .row{
+            display:inline-flex;
+            width:100%
+        }
+</style>
+</head>
+<body>
+<div class="wrap">
 			<div class="container">
 				<div class="row justify-content-between">
 						<div class="col d-flex align-items-center">
@@ -85,7 +95,7 @@ else{
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="../../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -94,51 +104,148 @@ else{
 	        	<li class="nav-item active"><a href="index-2.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	
-	        	<li class="nav-item"><a href="index-2.html" class="nav-link">Franchise Opportunities</a></li>
-				<li class="nav-item"><a href="index-3.html" class="nav-link">Franchise Benefits</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Apply Online</a></li>
-            <li class="nav-item"><a href="status.html" class="nav-link">Check Status</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        	<li class="nav-item"><a href="../index-2.html" class="nav-link">Franchise Opportunities</a></li>
+				<li class="nav-item"><a href="../index-3.html" class="nav-link">Franchise Benefits</a></li>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Apply Online</a></li>
+            <li class="nav-item"><a href="../../status.html" class="nav-link">Check Status</a></li>
+	          <li class="nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
+    <div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
+            </div>
+        </div>
+    </div>
+    
+   <br><br><br>
+  <div class="container">
+<div class="row">
+     <div class="col-xl-4 col-md-4 col-xs-4">
+        <button type="button" class="flx">
+            <form method="post" style="text-align:left;">
+              <input type="text" name="search" placeholder="Search by Name">
+                <button type="submit" style="background-color:aqua;cursor: pointer;">Search</button>
+            </form>
 
+    
+        </button>
+     </div>
+        <div class="col-xl-4 col-md-4 col-xs-4">
+            <a href="adminallcheck.php"><button type="button" class="flx"> Manage Customer</button></a>
+        </div>
+        <div class="col-xl-4 col-md-4 col-xs-4">
+            <a href="#"><button type="button" class="flx"> previous Customer </button></a>
 
+        </div>
 
-<div class="center">
-
-
-
-<h3> Congratulations !</h3>
-<p> Your Application for Franchise has been successfully<br>
-submitted to us, We will review your application<br>
-and get back to you as soon as possible.<br>
-
-</p>
-
-
-
-<br>
-<br>
-<h3> बधाई हो ! </h3>
-<p>आपका आवेदन सफलतापूर्वक हमारे पास<br>
-जमा हो गया है, हम आपके आवेदन की समीक्षा करेंगे और<br>
-हम जल्द से जल्द आपसे संपर्क करेंगे।<br>
-
-<br><br><br>
-
-<a href="index2.html" class="myButton"> Back to Home Page</a>
+    </div>
 </div>
 
+  <div class="container style='text-align:center;'">
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <br><br>
+    <table border="2" >
+    <tr class="thead">
+        <?php if (isset($result)) { ?>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Outlet Type</td>
+                <td>Budget</td>
+                <td>Pincode</td>
+                </tr>
+        <?php   while ($row = mysqli_fetch_assoc    ($result )) { ?>
+               
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td><?php echo $row['city']; ?></td>
+                    <td><?php echo $row['state']; ?></td>
+                    <td><?php echo $row['outlet']; ?></td>
+                    <td><?php echo $row['budget']; ?></td>
+                    <td><?php echo $row['pincode']; ?></td>
+                    <td>
+                    <form method="post" action="approve.php">
+                        <input type="hidden" name="phone_number" value="<?php echo $row['phone']; ?>">
+                        <button type="submit" name="approve" class="btn btn-primary">Approve</button>
+                    </form>
+                </td>
+                </tr>
+            <?php } }?>
 
 
-      <!-- footer -->
 
+    </table>
+            
+    <br>
+    <div class="container" style="text-align:center">
+        <div class="row">
+            <div class="col-xl-3 col-xs-3 col-md-3">
+                <a href="">
+<button type="button">Approve now</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+            <a href="">
+<button type="button">processing Fee</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+            <a href="">
+<button type="button">Registration fee</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+            <a href="">
+<button type="button">Agreement</button> 
+</a>
+</br><br>
+</div>
+</div>
+<div class="row">
+<div class="col-xl-3 col-xs-3 col-md-3">
+    <a href="#">
+<button type="button">NOC</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+            <a href="">
+<button type="button">Mechinary & equipment</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+        <a href="">
+<button type="button">Interior design</button>
+</a>
+        </div>
+        <div class="col-xl-3 col-xs-3 col-md-3">
+            <a href="">
+<button type="button">Product order</button>
+</a>
+</div>
+</div>
+  
 
-      
-<footer class="footer">
+ 
+ </div> 
+
+        </div>
+
+        <hr><hr>
+    
+   <!-- ||||||||||||footer|||||||||||||||||| -->
+         
+   <footer class="footer" width="100%">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
@@ -202,8 +309,11 @@ and get back to you as soon as possible.<br>
 	        </div>
 				</div>
 			</div>
-		</footer>
-    	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		</footer>' <script src="js/jquery.min.js"></script>
+		
+
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- <script src="js/jquery.min.js"></script> -->
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -224,6 +334,6 @@ and get back to you as soon as possible.<br>
 
 
 
-</body>
 
+ </body>
 </html>

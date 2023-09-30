@@ -28,7 +28,7 @@ if (!$con) {
             $outlet=$row['outlet'];
             $budget=$row['budget'];
             $pincode=$row['pincode'];
-
+            $application_status=$row['application_status'];
 
             // echo "hello".$pincode;
             // echo "<div>";
@@ -71,6 +71,7 @@ $_SESSION['budget'] = $budget;
 $_SESSION['outlet'] = $outlet;
 $_SESSION['pincode'] = $pincode; // Assuming you have a variable named $pincode
 $_SESSION['applicationid']= $applicationid;
+
     mysqli_close($con);
 
 ?>
@@ -135,59 +136,33 @@ $_SESSION['applicationid']= $applicationid;
 <div style="text-align:left;display: block;justify-content: center; margin-left: 70px;">
         <?php
 echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>";
-            echo "<h4 style= 'color: #787878;'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
+echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion status: "."</span>".$application_status."</h4>";
+
+            echo "<h4 style= 'color: black;'>"."<span  style= 'color: #0000FF'>"."Applicaion id:- "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
           
         //    echo $applicationid;
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Name: "."</span>" .$un . "</h4>";
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Phone: "."</span>" . $phone."</h4>";
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Email: "."</span>" . $email . "</h4>";
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Address: "."</span>" .$city .","."<span>" .$state."</span>"."</h4>";
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $budget. "</h4>";
 
-            echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "outlet: "."</span>". $outlet. "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Name of Applicant:- "."</span>" .$un . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Contact Number:- "."</span>" . $phone."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Email:- "."</span>" . $email . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Business Address:- "."</span>" .$city .","."<span>" .$state."</span>"."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $budget. "</h4>";
+
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Application For business Types:- "."</span>". $outlet. "</h4>";
+
             echo "</div>";
+
 
 
 
 ?>
 </div>
-
-
-<div class="table" border="1" style="text-align: center;">
-
-<table style="border: solid 2px black; display:inline-block; ">
-<thead>
-    <tr>
-<td colspan="5">
-
-<h1 style="color:green;text-align:center;">&emsp; &emsp; &ensp; &ensp; Approved &emsp; &emsp; &emsp; &emsp; &emsp;</h1>
-</td>
-</tr>
-<tr>
-    <td style="border-top: solid 2px green;">
-</td>
-</tr>
-
-</thead>
-<tbody>
-<tr>
-    <td><b>REGISTRATION</b></td>
-</tr>
-<tr>
-    <td>INR. <?php echo $budget ?></td>
-</tr>
-<tr>
-    <td><?php echo date("Y-m-d") ?></td>
-</tr>
-
-<tr>
-    <td><a href="invoice.php" target="_blank">INVOICE</a></td>
-
-</td>
-</tbody>
-
-</table>
+<div class="button">
+   <a href="invoice.php" ><button >Get Invoice</button></a>
+  <a href='../base.apk' download>  <button >Business app</button></a>
+  <a href="" > <button>Contact US</button></div></a> 
 </div>
+
 
 
 
