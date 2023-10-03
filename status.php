@@ -133,7 +133,7 @@ $_SESSION['applicationid']= $applicationid;
 
 
 
-<div style="text-align:left;display: block;justify-content: center; margin-left: 70px;">
+<div style="text-align:center;display: block;justify-content: left;border: solid 2px red;">
         <?php
 echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>";
 echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion status: "."</span>".$application_status."</h4>";
@@ -157,7 +157,7 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
 
 ?>
 </div>
-<div class="button">
+<div class="button" style="text-align:center; cursor: pointer;">
    <a href="invoice.php" ><button >Get Invoice</button></a>
   <a href='../base.apk' download>  <button >Business app</button></a>
   <a href="" > <button>Contact US</button></div></a> 
