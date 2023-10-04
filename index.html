@@ -213,6 +213,11 @@
   -webkit-transition:all .5s cubic-bezier(0.4, 0, 1, 1);
   transition: all .5s cubic-bezier(0.4, 0, 1, 1);
 }
+/* Hide the Member Login menu item */
+.member-login {
+  display: none;
+}
+
 </style>
 
 
@@ -272,6 +277,7 @@
 	<option value="Rajasthan">Rajasthan</option>
 	<option value="Sikkim">Sikkim</option>
 	<option value="Tamil Nadu">Tamil Nadu</option>
+	<option value="Telangana">Telangana</option>
 	<option value="Tripura">Tripura</option>
 	<option value="Uttaranchal">Uttaranchal</option>
 	<option value="Uttar Pradesh">Uttar Pradesh</option>
@@ -281,9 +287,11 @@
 	
   	 	 		<select name="outlet" required class="form-control">
 	            <option value="Not Selected">Select Types Of Outlet</option>
-				<option value="MRF Franchise">MRF Franchise</option>
-				<option value="Distributor">Distributor</option>
 				<option value="Retailer">Retailer</option>
+				<option value="Distributor">Distributor</option>
+				<option value="MRF Franchise">MRF Franchise</option>
+				<option value="Super Stock">Super stock</option>
+				
 				</select>
                 
                 <select name="budget" required class="form-control">
@@ -379,7 +387,7 @@
 				<button class="dropbtn">Login</button>
 				<div class="dropdown-content">
 				<li class="nav-item"  ><a href="./login-page/userlogin.html" class="nav-link">User Login</a></li>
-				 <li class="nav-item"> <a href="./member login/html/memberlogin.html" class="nav-link">Member Login</a></li>
+				 <li class="nav-item member-login"> <a href="./member login/html/memberlogin.html" class="nav-link">Member Login</a></li>
 				</div>
 			  </div>
 	        </ul>
@@ -394,7 +402,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate" style="background:rgba(0,0,0,.5);padding:5px;">
           	<h1 class="subheading">Welcome to MRF Tyres Franchises Apply</h1>
-            <p><a href="about.html" class="btn btn-primary">Learn more</a> <a href="contact.html" class="btn btn-white">Contact us</a></p>
+            <p><a href="about.html" class="btn btn-primary">Apply Now</a> <a href="contact.html" class="btn btn-white">Contact us</a></p>
           </div>
         </div>
       </div>

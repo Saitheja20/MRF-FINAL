@@ -53,6 +53,31 @@
 .dropdown:hover .dropbtn {background-color: #000000;color: #f1f1f1;}
 
 
+ .form-control{
+	height: 40px;
+	width: 100%;
+	border:1px solid black;
+	font-size: 15px;
+	color:#000000;
+	margin-bottom: 15px;
+}
+.form-control:focus{
+	outline: none;
+}
+.login-popup .box .form label{
+	font-size: 15px;
+	color:#555555;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: flex;
+		float: left;
+    }
+    .navbar-nav li.nav-item {
+        margin-bottom: 10px; /* Adjust as needed */
+    }
+}
 	</style>
    
 
@@ -89,11 +114,13 @@
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	
 	        	<li class="nav-item"><a href="index-2.html" class="nav-link">Franchise Opportunities</a></li>
-				<li class="nav-item"><a href="index-3.html" class="nav-link">Franchise Benefits</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Apply Online</a></li>
+				<!-- <li class="nav-item"><a href="index-2.html" class="nav-link">Franchise Benefits</a></li> -->
+	          <li class="nav-item"><a href="index-2.html" class="nav-link">Apply Online</a></li>
 			  <li class="nav-item"><a href="status.html" class="nav-link">Check Status</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	        </ul>
+				<!-- <li class="nav-item"  ><a href="./login-page/userlogin.html" class="nav-link">User Login</a></li> -->
+				 <li class="nav-item member-login"> <a href="./member login/html/memberlogin.html" class="nav-link">Member Login</a></li>
+			</ul>
 	      </div>
 	    </div>
 	  </nav>
@@ -105,7 +132,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate" style="background:rgba(0,0,0,.5);padding:5px;">
           	<h1 class="subheading">Welcome to MRF Tyer Dealership Apply 2023</h1>
-            <p><a href="about.html" class="btn btn-primary">Learn more</a> <a href="contact.html" class="btn btn-white">Contact us</a></p>
+            <p><a href="about.html" class="btn btn-primary">Apply Now</a> <a href="contact.html" class="btn btn-white">Contact us</a></p>
           </div>
         </div>
       </div>
@@ -134,24 +161,103 @@
 								<div class="col-md-12">
 									<div class="form-group">
 			    					<div class="input-wrap">
-			            		<div class="icon"><span class="ion-md-phone"></span></div>
-			            		<input type="number" name="phone" required="required" class="form-control " placeholder="phone Number">
-		            		</div>
-			    				</div>
+			            			<div class="icon"><span class="ion-md-phone"></span></div>
+			            			<input type="number" name="phone" required="required" class="form-control " placeholder="phone Number">
+		            				</div>
+			    					</div>
 								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			    					<input type="text" name="investment" required="required" class="form-control" placeholder="Investment">
-			    				</div>
-			    				</div>
 								<div class="col-md-12">
 									<div class="form-group">
 			    					<div class="input-wrap">
 			            		<div class="icon"><span class="ion-ios-clock"></span></div>
-			            		<textarea class="form-control" name="message" placeholder="Address"></textarea>
+			            		<textarea class="form-control" name="city" placeholder="Address"></textarea>
 		            		</div>
 			    				</div>
 								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+			    					<div class="input-wrap">
+			            			<div class="icon"><span class="ion-md-phone"></span></div>
+									
+			            			<select name="state" required class="form-control">
+										<option value="">Select State</option>
+										<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+										<option value="Andhra Pradesh">Andhra Pradesh</option>
+										<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+										<option value="Assam">Assam</option>
+										<option value="Bihar">Bihar</option>
+										<option value="Chandigarh">Chandigarh</option>
+										<option value="Chhattisgarh">Chhattisgarh</option>
+										<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+										<option value="Daman and Diu">Daman and Diu</option>
+										<option value="Delhi">Delhi</option>
+										<option value="Goa">Goa</option>
+										<option value="Gujarat">Gujarat</option>
+										<option value="Haryana">Haryana</option>
+										<option value="Himachal Pradesh">Himachal Pradesh</option>
+										<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+										<option value="Jharkhand">Jharkhand</option>
+										<option value="Karnataka">Karnataka</option>
+										<option value="Kerala">Kerala</option>
+										<option value="Lakshadweep">Lakshadweep</option>
+										<option value="Madhya Pradesh">Madhya Pradesh</option>
+										<option value="Maharashtra">Maharashtra</option>
+										<option value="Manipur">Manipur</option>
+										<option value="Meghalaya">Meghalaya</option>
+										<option value="Mizoram">Mizoram</option>
+										<option value="Nagaland">Nagaland</option>
+										<option value="Orissa">Orissa</option>
+										<option value="Pondicherry">Pondicherry</option>
+										<option value="Punjab">Punjab</option>
+										<option value="Rajasthan">Rajasthan</option>
+										<option value="Sikkim">Sikkim</option>
+										<option value="Tamil Nadu">Tamil Nadu</option>
+										<option value="Telangana">Telangana</option>
+										<option value="Tripura">Tripura</option>
+										<option value="Uttaranchal">Uttaranchal</option>
+										<option value="Uttar Pradesh">Uttar Pradesh</option>
+										<option value="West Bengal">West Bengal</option>
+									
+									</select>
+		            				</div>
+			    					</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+			    					<div class="input-wrap">
+			            			<div class="icon"><span class="ion-md-phone"></span></div>
+			            			<select name="outlet" required class="form-control">
+										<option value="Not Selected">Select Types Of Outlet</option>
+										<option value="Retailer">Retailer</option>
+										<option value="Distributor">Distributor</option>
+										<option value="MRF Franchise">MRF Franchise</option>
+										<option value="Super Stock">Super stock</option>
+										
+										</select>
+		            				</div>
+			    					</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+			    					<div class="input-wrap">
+			            			<div class="icon"><span class="ion-md-phone"></span></div>
+			            			<select name="budget" required class="form-control">
+										<option value="Not Selected">Investment Budget</option>
+										<option value="05 Lakh to 10 Lakh">05 Lakh to 10 Lakh</option>
+										<option value="10 Lakh to 20 Lakh">10 Lakh to 20 Lakh</option>
+										<option value="20 Lakh to 50 Lakh">20 Lakh to 50 Lakh</option>
+										<option value="above 50 Lakh">above 50 Lakh</option>
+										</select>
+		            				</div>
+			    					</div>
+								</div>
+								
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" name="pincode" minlength="6" maxlength="6" placeholder="Enter Pin Code" required class="form-control">
+			    				</div>
+			    				</div>
+								
 								<div class="col-md-12">
 									<div class="form-group">
 			              <input type="submit" name="submit" value="Apply Now" class="btn btn-primary py-3 px-4">
@@ -164,8 +270,8 @@
 							
 							
 							<br>
-	    			<p><b>Disclaimer :-</b> dear visitors, your personal details are not for the marketing purpose, but only for reference to get in touch with the users only.</p>
-							
+	    			<!-- <p><b>Disclaimer :-</b> dear visitors, your personal details are not for the marketing purpose, but only for reference to get in touch with the users only.</p>
+							 -->
 	    			</form>
 	    			
 	    			
