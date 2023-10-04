@@ -141,6 +141,7 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
             echo "<h4 style= 'color: black;'>"."<span  style= 'color: #0000FF'>"."Applicaion id:- "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
           
         //    echo $applicationid;
+// <<<<<<< second
 
             echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Name of Applicant:- "."</span>" .$un . "</h4>";
             echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Contact Number:- "."</span>" . $phone."</h4>";
@@ -152,6 +153,32 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
 
             echo "</div>";
 
+// =======
+// >>>>>>> main
+
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Name of Applicant:- "."</span>" .$un . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Contact Number:- "."</span>" . $phone."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Email:- "."</span>" . $email . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Business Address:- "."</span>" .$city .","."<span>" .$state."</span>"."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $budget. "</h4>";
+
+// <<<<<<< second
+
+?>
+</div>
+<div class="button">
+   <a href="invoice.php" ><button >Get Invoice</button></a>
+  <a href='../base.apk' download>  <button >Business app</button></a>
+  <a href="" > <button>Contact US</button></div></a> 
+</div>
+<!-- ======= -->
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Application For business Types:- "."</span>". $outlet. "</h4>";
+<!-- >>>>>>> main
+ -->
+            echo "</div>";
+
+<!-- <<<<<<< second
+======= -->
 
 
 
@@ -162,10 +189,11 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
   <a href='../base.apk' download>  <button >Business app</button></a>
   <a href="" > <button>Contact US</button></div></a> 
 </div>
+<!-- >>>>>>> main
 
 
 
-
+ -->
 <footer class="footer">
 			<div class="container">
 				<div class="row">

@@ -1,3 +1,5 @@
+/* <<<<<<< second
+======= */
 
 @media screen and(min-width:300px) and (max-width:600px){
     .lapvisible {
@@ -14,6 +16,7 @@
 
 
 
+/* >>>>>>> main */
 table{
     text-align: center;
 }
@@ -45,6 +48,9 @@ h1{
 }
 a:hover{
     background-color: aqua;
+/* <<<<<<< second */
+}
+/* ======= */
 }
 .fline{
     display: flex;
@@ -53,3 +59,5 @@ a:hover{
 
 
 
+/* >>>>>>> main
+ */
