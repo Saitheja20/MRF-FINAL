@@ -1,3 +1,22 @@
+/* <<<<<<< second
+======= */
+
+@media screen and(min-width:300px) and (max-width:600px){
+    .lapvisible {
+        display:none;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .fline{
+        display: none;
+        visibility: hidden;
+    }
+}
+
+
+
+
+/* >>>>>>> main */
 table{
     text-align: center;
 }
@@ -29,4 +48,16 @@ h1{
 }
 a:hover{
     background-color: aqua;
+/* <<<<<<< second */
 }
+/* ======= */
+}
+.fline{
+    display: flex;
+    float: left;
+}
+
+
+
+/* >>>>>>> main
+ */
