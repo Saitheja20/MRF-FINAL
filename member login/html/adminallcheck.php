@@ -1,25 +1,25 @@
 <?php
-// Connect to the database
+
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
-// Check the connection
+
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Handle search functionality if provided
+
 if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    // Modify the query to include the search term
+   
     $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
     $result = mysqli_query($con, $query);
 } else {
-    // If search is not provided, retrieve all records from registration
+    
     $query = "SELECT * FROM registration";
     $result = mysqli_query($con, $query);
 }
 
-// Handle update functionality if the admin submits the edit form
+
 if (isset($_POST['update'])) {
     $phone_number = $_POST['phone_number'];
     $new_name = $_POST['new_name'];
@@ -30,7 +30,7 @@ if (isset($_POST['update'])) {
     $new_budget = $_POST['new_budget'];
     $new_pincode = $_POST['new_pincode'];
 
-    // Update the record in the database
+   
     $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode' WHERE phone='$phone_number'";
     
     if (mysqli_query($con, $updateQuery)) {
