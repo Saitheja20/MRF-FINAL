@@ -5,7 +5,7 @@
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Create a database connection
+
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
 // Check if the connection was successful
@@ -60,7 +60,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "Connection lost";
 }
 
-// Close the database connection
+
 // mysqli_close($con);
 // echo $city;
 
