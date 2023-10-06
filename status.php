@@ -133,10 +133,19 @@ $_SESSION['applicationid']= $applicationid;
 
 
 
-<div style="text-align:left;display: block;justify-content: center; margin-left: 70px;">
+<div style="text-align:center;display: block;justify-content: left;border: solid 2px red;">
         <?php
-echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>";
-echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion status: "."</span>".$application_status."</h4>";
+echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>"; 
+
+?>
+<?php
+if ($application_status == "approved") {
+    echo "<h4 style='color: green;'>" . "<span style='color: #0000FF'>" . "Application status: " . "</span>" . $application_status . "</h4>";
+} else {
+    echo "<h4 style='color: red;'>" . "<span style='color: #0000FF'>" . "Application status: " . "</span>" . $application_status . "</h4>";
+}
+?>
+<?php
 
             echo "<h4 style= 'color: black;'>"."<span  style= 'color: #0000FF'>"."Applicaion id:- "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
           
@@ -156,16 +165,22 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
 
 
 ?>
+</div><?php
+if ($application_status == "approved") {
+?>
+<div class="button" style="text-align:center; cursor: pointer;">
+   <a href="invoice.php"><button style="background-color: green;">Get Invoice</button></a>
+   <a href='../base.apk' download><button style="background-color: green;">Business app</button></a>
+   <a href=""><button style="background-color: green;">Contact US</button></a>
 </div>
-<div class="button">
-   <a href="invoice.php" ><button >Get Invoice</button></a>
-  <a href='../base.apk' download>  <button >Business app</button></a>
-  <a href="" > <button>Contact US</button></div></a> 
+<?php
+} else {
+?>
+<h4 style="text-align:center; color:red">application status: not approved</h4>
+<?php
+}
+?>
 </div>
-
-
-
-
 <footer class="footer">
 			<div class="container">
 				<div class="row">
