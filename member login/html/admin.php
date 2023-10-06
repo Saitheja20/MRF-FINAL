@@ -18,7 +18,7 @@ if (isset($_POST['search'])) {
 
 echo "connection lost";
 }
-$mysqli -> close();
+
 
 ?>
 <!DOCTYPE html>
@@ -204,6 +204,7 @@ color:black;
                             <th>Outlet Type</th>
                             <th>Budget</th>
                             <th>Pincode</th>
+                            <th>registration price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -219,6 +220,7 @@ color:black;
                                     <td><?php echo $row['outlet']; ?></td>
                                     <td><?php echo $row['budget']; ?></td>
                                     <td><?php echo $row['pincode']; ?></td>
+                                    <td><?php echo $row['regprice']; ?></td>
                                     <td>
                                         <form method="post" action="approve.php">
                                             <input type="hidden" name="phone_number" value="<?php echo $row['phone']; ?>">

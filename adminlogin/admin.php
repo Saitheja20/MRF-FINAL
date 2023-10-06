@@ -1,131 +1,153 @@
 
 <?php
+// session_start();
+
+// // // Check if the user is not authenticated, redirect to login page
+// // if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+// //     header("Location: admin.html"); // Redirect to the login page
+// //     exit(); // Stop executing the rest of the code
+// // }
+
+// $email = $_POST['email'];
+// $password = $_POST['password'];
+
+// // Create a database connection
+// $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+// // Check if the connection was successful
+// if (!$con) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+
+// $query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
+
+// $result = mysqli_query($con, $query);
+
+// if (!empty($result)) {
+// 	$_SESSION['authenticated'] = true;
+// 	// header("Location: admin1.php");
+//     // exit;
+// 	while ($row = mysqli_fetch_assoc($result)) {
+
+// 		$un=$row['name'];
+// 		$phones=$row['phone'];
+// 		$name=$row['name'];
+// 		$applicationid = $phones;
+// 		$arr = str_split($applicationid,strlen($applicationid)/2);  
+// 		$email=$row['email'];
+// 		$phone=$row['phone'];
+// 		$city=$row['city'];
+// 		$state=$row['state'];
+// 		$outlet=$row['outlet'];
+// 		$budget=$row['budget'];
+// 		$pincode=$row['pincode'];
 
 
-$name=$_POST['name'];
-$email= $_POST['email'];
-$phone = $_POST['phone'];
-$city= $_POST['city'];
-$state = $_POST['state'];
-$outlet = $_POST['outlet'];
-$budget = $_POST['budget'];
-$pincode = $_POST['pincode'];
-$password =$_POST['phone'];
-$arr="";
-$application_status = "Not approved";
-$application_id = $phone;
-$arr = str_split($application_id,strlen($application_id)/2);  
-$application_id = "MRF-f".date("Ymd").$arr[0];
-$regdate= "".date("Y/m/d");
-$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
-$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate','')";
-$result = mysqli_query($con, $query);
-
-require 'vendor/autoload.php'; // Include PHPMailer library
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-$mail = new PHPMailer(true);
-
-// $to = $email;
-// $subject = 'Registration Confirmation';
-// $message = "Hello $name,\n\nThank you for registering with us!\n\nWe look forward to working with you.\n\nBest regards,\nYour Company Name";
-
-// $headers = 'From: info@mrftyrefranchises.com' . "\r\n" .
-// 	'Reply-To: info@mrftyrefranchises.com' . "\r\n" .
-// 	'X-Mailer: PHP/' . phpversion();
-
-// // Send the email
-// mail($to, $subject, $message, $headers);
+// 		// echo "hello".$pincode;
+// 		// echo "<div>";
+// 		// echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
+	  
+	
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Name: "."</span>" .$row['name'] . "</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Phone: "."</span>" . $row['phone'] ."</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Email: "."</span>" . $row['email'] . "</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Address: "."</span>" .$row['city']. $row['state']."</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $row['budget']. "</h4>";
+// 		// echo "</div>";
+	
+// 	}
+// }
 
 
-try {
-    // Server settings
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com'; // Your SMTP server
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@mrftyrefranchises.com'; // Your email address
-    $mail->Password   = 'Mrf@7848'; // Your email password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS or SSL
-    $mail->Port       = 465; // Port number (usually 587 for TLS or 465 for SSL)
+//  else {
+// 	echo "Failed to execute the query: " . mysqli_error($con);
+// }
+// // Check if either of the queries was successful
+// if ($result && mysqli_num_rows($result) > 0) {
+//     // echo "Connection is successful saitheja";
+// 	$_SESSION['authenticated'] = true;
 
-    // Recipient
-    $mail->setFrom('info@mrftyrefranchises.com', 'Admin@MRF');
-    $mail->addAddress($email, $name); // Email recipient
+// } else {
+//     echo "Connection lost";
+// }
 
-    // Email content
-    $mail->isHTML(true);
-    $mail->Subject = 'Registration Confirmation';
-    $mail->Body    = 'Hello' $name',\n\nThank you for registering with us!\n\nWe look forward to working with you.\n\nBest regards,\nYour Company Name';
+// // Close the database connection
+// // mysqli_close($con);
+// // echo $city;
+// if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+//     header("Location: admin1.php"); // Redirect to the login page
+//     exit(); // Stop executing the rest of the code
+// }
 
-    // Send email
-    $mail->send();
-    echo 'Email has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+session_start();
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Create a database connection
+    $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+    // Check if the connection was successful
+    if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
+
+    $result = mysqli_query($con, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $_SESSION['authenticated'] = true;
+    } else {
+        echo "Incorrect login credentials. Please try again.";
+    }
+
+    // Close the database connection
+    mysqli_close($con);
 }
-Make sure to replace 'smtp.example.com', 'your_email@example.com', and 'your_password' with your actual SMTP server, email address, and password provided by Hostinger.
 
-Testing: Test your email sending functionality to make sure it works as expected.
-
-SPF and DKIM Records: Consider adding SPF (Sender Policy Framework) and DKIM (DomainKeys Identified Mail) records to your DNS settings to improve email deliverability and reduce the chances of your emails being marked as spam. Hostinger may provide guidance on how to set up these records in their control panel.
-
-Monitoring: Monitor your email deliverability and check for any email-related issues regularly.
-
-Keep in mind that sending emails from a web server can sometimes be challenging due to spam filters and various email server configurations. If you encounter issues, you may need to contact Hostinger support for further assistance.
-
-
-
-
-
-
-
-if($result){
-    // echo "data inserted successfully";
-    // header("Location: thanks.html");
-}
-else{
-    echo "OOPS somthing went wrong please check amd re-enter details";
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: userlogin.html"); // Redirect to the login page
+    exit(); // Stop executing the rest of the code
 }
 
 
-?>
+if ($result && mysqli_num_rows($result) > 0) {
 
-<html>
-    <head>
-	<meta charset="UTF-8" />
+	?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
     <title>user login page</title>
     <title>MRF Dealership | Apply for MRF Tyres Dealership Application | MRF Dealership  Apply 2023</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
     <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
-    <link href="external2fbb.html" rel="stylesheet">
+    <link href="external2fbb.html" rel="stylesheet">	
     <link href="externalf197.html" rel="stylesheet">
     <meta name="description" content="MRF Tyres is looking for MRF Tyres Dealership partner in India. We, an MRF Dealership chain is inviting MRF Tyres Dealership application.">
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
  
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../../css/style.css">
    
 
-    <link rel="stylesheet" href="status.css">
-	<link rel="stylesheet" href="apply.css">
-   
-    </head>
-    <body>
-	<div class="wrap">
+</head>
+<body>
+<div class="wrap">
 			<div class="container">
 				<div class="row justify-content-between">
 						<div class="col d-flex align-items-center">
@@ -146,7 +168,7 @@ else{
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -155,49 +177,41 @@ else{
 	        	<li class="nav-item active"><a href="index-2.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	        	
-	        	<li class="nav-item"><a href="index-2.html" class="nav-link">Franchise Opportunities</a></li>
-				<li class="nav-item"><a href="index-3.html" class="nav-link">Franchise Benefits</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Apply Online</a></li>
-            <li class="nav-item"><a href="status.html" class="nav-link">Check Status</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        	<li class="nav-item"><a href="../index-2.html" class="nav-link">Franchise Opportunities</a></li>
+				<li class="nav-item"><a href="../index-3.html" class="nav-link">Franchise Benefits</a></li>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Apply Online</a></li>
+            <li class="nav-item"><a href="../status.html" class="nav-link">Check Status</a></li>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
+<div style="text-align:center;margin:100px 0 100px 0;">
+<?php
+if ($result && mysqli_num_rows($result) > 0) {
+    echo "<h1>"."Hello...".$un."</h1>";
+	echo "<p>"."Let's get started by downloading the app. "."click the download icon"."</p>";
+
+	echo "<a href='admin1.php'><img src='../download.svg' alt='download image' width='5%'></a>";
+
+} else {
+	echo "<h1>"."Oops you entered wrong credentials please try again"."</h1>";
+	echo "<a href='userlogin.html' >Login</a>";
+
+}
 
 
 
-<div class="center">
-
-
-
-<h3> Congratulations !</h3>
-<p> Your Application for Franchise has been successfully<br>
-submitted to us, We will review your application<br>
-and get back to you as soon as possible.<br>
-
-</p>
-
-
-
-<br>
-<br>
-<h3> बधाई हो ! </h3>
-<p>आपका आवेदन सफलतापूर्वक हमारे पास<br>
-जमा हो गया है, हम आपके आवेदन की समीक्षा करेंगे और<br>
-हम जल्द से जल्द आपसे संपर्क करेंगे।<br>
-
-<br><br><br>
-
-<a href="index2.html" class="myButton"> Back to Home Page</a>
+?>
 </div>
 
 
 
-      <!-- footer -->
 
 
+
+      <!-- ||||||||||||footer|||||||||||||||||| -->
       
 <footer class="footer">
 			<div class="container">
@@ -263,8 +277,10 @@ and get back to you as soon as possible.<br>
 	        </div>
 				</div>
 			</div>
-		</footer>
-    	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		</footer>' <script src="js/jquery.min.js"></script>
+		
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- <script src="js/jquery.min.js"></script> -->
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -286,5 +302,7 @@ and get back to you as soon as possible.<br>
 
 
 </body>
-
 </html>
+<?php
+}
+?>

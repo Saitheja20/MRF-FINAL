@@ -1,0 +1,55 @@
+
+@media screen and(min-width:300px) and (max-width:600px){
+    .lapvisible {
+        display:none;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .fline{
+        display: none;
+        visibility: hidden;
+    }
+}
+
+
+
+
+table{
+    text-align: center;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+.thead{
+    background-color: aqua;
+
+}
+.heading{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.flx{
+    text-align: inherit;
+}
+
+.fl{
+
+    display: flex;
+    float: left;
+}
+a:hover{
+    background-color: aqua;
+}
+.fline{
+    display: flex;
+    float: left;
+}
+
+
+

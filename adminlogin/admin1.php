@@ -1,4 +1,15 @@
 <?php
+
+// include 'admin.php';
+session_start();
+// Check if the user is not authenticated, redirect to login.php
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: login.php"); // Redirect to the login page
+    exit();
+}
+
+// Check if the user is not authenticated, redirect to login page
+
 // Connect to the database
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
@@ -93,7 +104,7 @@ if (isset($_POST['update'])) {
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="../../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
