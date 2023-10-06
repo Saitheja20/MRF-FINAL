@@ -1,25 +1,25 @@
 <?php
-// Connect to the database
+
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
-// Check the connection
+
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Handle search functionality if provided
+
 if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    // Modify the query to include the search term
+   
     $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
     $result = mysqli_query($con, $query);
 } else {
-    // If search is not provided, retrieve all records from registration
+    
     $query = "SELECT * FROM registration";
     $result = mysqli_query($con, $query);
 }
 
-// Handle update functionality if the admin submits the edit form
+
 if (isset($_POST['update'])) {
     $phone_number = $_POST['phone_number'];
     $new_name = $_POST['new_name'];
@@ -29,9 +29,15 @@ if (isset($_POST['update'])) {
     $new_outlet = $_POST['new_outlet'];
     $new_budget = $_POST['new_budget'];
     $new_pincode = $_POST['new_pincode'];
+    $new_regprice = $_POST['new_regprice'];
 
-    // Update the record in the database
+// <<<<<<< main
+   
     $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode' WHERE phone='$phone_number'";
+// =======
+    // Update the record in the database
+    $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode', regprice='$new_regprice' WHERE phone='$phone_number'";
+// >>>>>>> saibackend
     
     if (mysqli_query($con, $updateQuery)) {
         echo "Record updated successfully.";
@@ -57,17 +63,17 @@ if (isset($_POST['update'])) {
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
  
-    <link rel="stylesheet" href="../../css/animate.css">
+    <link rel="stylesheet" href="../css/animate.css">
     
-    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="../../css/flaticon.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/style.css">
    
 </head>
 <body>
@@ -115,7 +121,13 @@ if (isset($_POST['update'])) {
         <div class="row">
             <div class="col">
             <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
+<!-- <<<<<<< second
+
             <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
+<!-- >>>>>>> main -->
+=======
+            <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
+
             </div>
         </div>
     </div>
@@ -137,6 +149,7 @@ if (isset($_POST['update'])) {
                 <th>Outlet Type</th>
                 <th>Budget</th>
                 <th>Pincode</th>
+                <th>registration price<th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -151,6 +164,7 @@ if (isset($_POST['update'])) {
                     <td contenteditable="true"><?php echo $row['outlet']; ?></td>
                     <td contenteditable="true"><?php echo $row['budget']; ?></td>
                     <td contenteditable="true"><?php echo $row['pincode']; ?></td>
+                    <td contenteditable="true"><?php echo $row['regprice']; ?></td>
                     <td>
                         <button type="button" onclick="updateRecord(this, '<?php echo $row['phone']; ?>')">Update</button>
                     </td>
@@ -243,6 +257,7 @@ if (isset($_POST['update'])) {
             var new_outlet = cells[5].textContent;
             var new_budget = cells[6].textContent;
             var new_pincode = cells[7].textContent;
+            var new_regprice = cells[8].textContent;
 
             var form = document.createElement("form");
             form.method = "post";
@@ -287,6 +302,10 @@ if (isset($_POST['update'])) {
             new_pincode_input.type = "hidden";
             new_pincode_input.name = "new_pincode";
             new_pincode_input.value = new_pincode;
+            var new_regprice_input = document.createElement("input");
+            new_regprice_input.type = "hidden";
+            new_regprice_input.name = "new_regprice";
+            new_regprice_input.value = new_regprice;
 
             var update_button = document.createElement("button");
             update_button.type = "submit";
@@ -301,6 +320,7 @@ if (isset($_POST['update'])) {
             form.appendChild(new_outlet_input);
             form.appendChild(new_budget_input);
             form.appendChild(new_pincode_input);
+            form.appendChild(new_regprice_input);
             form.appendChild(update_button);
             document.body.appendChild(form);
 

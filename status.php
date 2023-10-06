@@ -28,8 +28,12 @@ if (!$con) {
             $outlet=$row['outlet'];
             $budget=$row['budget'];
             $pincode=$row['pincode'];
-            $application_status=$row['application_status'];
+           
+            $registration_date=$row['registration_date'];
+            $regprice=$row['regprice'];
 
+            $application_id=$row['application_id'];
+            $application_status=$row['application_status'];
             // echo "hello".$pincode;
             // echo "<div>";
             // echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
@@ -70,8 +74,10 @@ $_SESSION['state'] = $state;
 $_SESSION['budget'] = $budget;
 $_SESSION['outlet'] = $outlet;
 $_SESSION['pincode'] = $pincode; // Assuming you have a variable named $pincode
-$_SESSION['applicationid']= $applicationid;
-
+$_SESSION['application_id']= $application_id;
+$_SESSION['registration_date']=$registration_date;
+$_SESSION['application_status']=$application_status;
+$_SESSION['regprice']=$regprice;
     mysqli_close($con);
 
 ?>
@@ -150,6 +156,7 @@ if ($application_status == "approved") {
             echo "<h4 style= 'color: black;'>"."<span  style= 'color: #0000FF'>"."Applicaion id:- "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
           
         //    echo $applicationid;
+// <<<<<<< second
 
             echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Name of Applicant:- "."</span>" .$un . "</h4>";
             echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Contact Number:- "."</span>" . $phone."</h4>";
@@ -161,10 +168,49 @@ if ($application_status == "approved") {
 
             echo "</div>";
 
+// =======
+// >>>>>>> main
 
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Name of Applicant:- "."</span>" .$un . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Contact Number:- "."</span>" . $phone."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Email:- "."</span>" . $email . "</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>"."Business Address:- "."</span>" .$city .","."<span>" .$state."</span>"."</h4>";
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $budget. "</h4>";
 
+// <<<<<<< second
 
 ?>
+<!-- <<<<<<< main -->
+<!-- <<<<<<< main -->
+
+</div><?php
+if ($application_status == "approved") {
+?>
+<div class="button" style="text-align:center; cursor: pointer;">
+   <a href="invoice.php"><button style="background-color: green;">Get Invoice</button></a>
+   <a href='../base.apk' download><button style="background-color: green;">Business app</button></a>
+   <a href=""><button style="background-color: green;">Contact US</button></a>
+<!-- >>>>>>> touhidbackend -->
+</div>
+<?php
+} else {
+?>
+<h4 style="text-align:center; color:red">application status: not approved</h4>
+<?php
+}
+?>
+</div>
+
+<!-- ======= -->
+            echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Application For business Types:- "."</span>". $outlet. "</h4>";
+<!-- >>>>>>> main
+ -->
+            echo "</div>";
+<!-- 
+<!-- <<<<<<< second -->
+<!-- ======= -->
+
+======= -->
 </div><?php
 if ($application_status == "approved") {
 ?>
@@ -180,7 +226,22 @@ if ($application_status == "approved") {
 <?php
 }
 ?>
+<!-- >>>>>>> saibackend -->
+
+
+?>
 </div>
+<div class="button" style="text-align:center; cursor: pointer;">
+   <a href="invoice.php" ><button >Get Invoice</button></a>
+  <a href='../base.apk' download>  <button >Business app</button></a>
+  <a href="" > <button>Contact US</button></div></a> 
+</div>
+<!-- >>>>>>> main
+
+
+
+ -->
+
 <footer class="footer">
 			<div class="container">
 				<div class="row">

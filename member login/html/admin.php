@@ -1,12 +1,31 @@
 
 <?php
+// <<<<<<< main
+// <<<<<<< second
+// Connect to the database
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+// Check the connection
+// =======
 
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+
+// >>>>>>> main
+// =======
+
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
 
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+// <<<<<<< main
+// <<<<<<< second
+// Handle search functionality if provided
+// =======
 
 
 if (isset($_POST['search'])) {
@@ -18,7 +37,27 @@ if (isset($_POST['search'])) {
 
 echo "connection lost";
 }
+// <<<<<<< main
+// =======
+
+if (isset($_POST['search'])) {
+    $searchTerm = $_POST['search'];
+
+    $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
+    $result = mysqli_query($con, $query);
+} else {
+
+echo "connection lost";
+}
+
+$mysqli -> close();
+
+
+
+
+
 // $mysqli -> close();
+
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +67,14 @@ echo "connection lost";
     <title>user login page</title>
     <title>MRF Dealership | Apply for MRF Tyres Dealership Application | MRF Dealership  Apply 2023</title>
     <meta charset="utf-8">
+<!-- <<<<<<< main -->
+<!-- <<<<<<< second -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
+    <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
+    <link href="external2fbb.html" rel="stylesheet">
+    <link href="externalf197.html" rel="stylesheet">
+<!-- ======= -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -41,6 +88,22 @@ echo "connection lost";
     <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
     <link href="external2fbb.html" rel="stylesheet">
     <link href="externalf197.html   " rel="stylesheet">
+
+<!-- ======= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
+    <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
+    <link href="external2fbb.html" rel="stylesheet">
+    <link href="externalf197.html   " rel="stylesheet">
+
     <meta name="description" content="MRF Tyres is looking for MRF Tyres Dealership partner in India. We, an MRF Dealership chain is inviting MRF Tyres Dealership application.">
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
     <link rel="stylesheet" href="stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.html">
@@ -56,13 +119,23 @@ echo "connection lost";
 
     <link rel="stylesheet" href="../../css/flaticon.css">
     <link rel="stylesheet" href="../../css/style.css">
+<!-- <<<<<<< main -->
+<!-- <<<<<<< second
+======= -->
     <link rel="stylesheet" href="/admin.css">
+
+<!-- ======= -->
+    <link rel="stylesheet" href="/admin.css">
+
     <style>
 /* a:hover{
    
 color:red;  
 background-color:aqua;
 } */
+/* <<<<<<< main */
+/* <<<<<<< second */
+
 .my-button {
 background-color:#5783db;
 color:black;   
@@ -83,6 +156,7 @@ color:black;
             }
             
         }
+/* <<<<<<< main */
 
         /* Styles for mobile devices (screen width less than or equal to 768px) */
         @media (max-width: 768px) {
@@ -91,12 +165,24 @@ color:black;
                 display: none;
             }
 
+
+
+        /* Styles for mobile devices (screen width less than or equal to 768px) */
+        @media (max-width: 768px) {
+            .lapvisible {
+                /* Add your mobile-specific styles here */
+                display: none;
+            }
+
+
             .mobvisible {
                 /* Add your mobile-specific styles here */
                 display: block;
                text-align:center;
             }
         }
+
+
         table {
             margin-left: auto;
             margin-right: auto;
@@ -110,10 +196,13 @@ color:black;
             color: white;
             padding: 20px 0;
         }
+/* <<<<<<< second
+======= */
         .row{
             display:inline-flex;
             width:100%
         }
+
 </style>
 </head>
 <body>
@@ -161,13 +250,69 @@ color:black;
     <div class="container">
         <div class="row">
             <div class="col">
+
+<!-- <<<<<<< second -->
+            <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
+<!-- ======= -->
             <h1 style="text-align:center;color:white;border: 2px solid red; background-color:green;">Admin Panel</h1>
+
+            <h1 style="text-align:center;color:white;border: 2px solid red; background-color:green;">Admin Panel</h1>
+
             </div>
         </div>
     </div>
     
    <br><br><br>
 
+  <div class="container">
+<div class="row">
+     <div class="col-xl-4 col-md-4 col-xs-4">
+        <button type="button" class="flx">
+            <form method="post" style="text-align:left;">
+              <input type="text" name="search" placeholder="Search by Name">
+                <button type="submit" style="background-color:aqua;cursor: pointer;">Search</button>
+            </form>
+
+    
+        </button>
+     </div>
+        <div class="col-xl-4 col-md-4 col-xs-4">
+            <a href="adminallcheck.php"><button type="button" class="flx"> Manage Customer</button></a>
+        </div>
+        <div class="col-xl-4 col-md-4 col-xs-4">
+            <a href="#"><button type="button" class="flx"> previous Customer </button></a>
+
+  <div class="container style='text-align:center;'">
+<div class="row">
+    <div class="col">
+        <br><br>
+    <table border="2" style="margin-left:auto;margin-right:auto;">
+    <tr class="thead">
+        <?php if (isset($result)) { ?>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Outlet Type</td>
+                <td>Budget</td>
+                <td>Pincode</td>
+                </tr>
+        <?php   while ($row = mysqli_fetch_assoc    ($result )) { ?>
+               
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td><?php echo $row['city']; ?></td>
+                    <td><?php echo $row['state']; ?></td>
+                    <td><?php echo $row['outlet']; ?></td>
+                    <td><?php echo $row['budget']; ?></td>
+                    <td><?php echo $row['pincode']; ?></td>
+                    <td>
+                    <form method="post" action="approve.php">
+                        <input type="hidden" name="phone_number" value="<?php echo $row['phone']; ?>">
+                        <button type="submit" name="approve" class="btn btn-primary">Approve</button>
 
 <div class="container">
         <div class="row" >
@@ -176,6 +321,7 @@ color:black;
                     <form method="post" style="text-align: left;">
                         <input type="text" name="search" placeholder="Search by Name"><br>
                         <button type="submit" style="background-color: aqua; cursor: pointer;">Search</button>
+
                     </form>
                 </button>
             </div>
@@ -224,6 +370,105 @@ color:black;
                                             <input type="hidden" name="phone_number" value="<?php echo $row['phone']; ?>">
                                             <button type="submit" name="approve" class="btn btn-success">Approve</button>
                                             <button type="submit" name="cancel" class="btn btn-danger">Not approve</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+<div class="lapvisible">
+    <button type="button" class="fline my-button" >Approve now</button>    
+    <button type="button" class="fline my-button">processing Fee</button>    
+    <button type="button" class="fline my-button">Registration fee</button>    
+    <button type="button" class="fline my-button">Agreement</button> 
+    <br><br>
+    <button type="button" class="sline my-button">NOC</button>    
+    <button type="button" class="sline my-button">Mechinary & equipment</button>    
+    <button type="button" class="sline my-button">Interior design</button>    
+    <button type="button" class="sline my-button">Product order</button>   
+    </div>
+    
+    
+    <div class="mobvisible">
+    <button type="button" class="fline my-button" >Approve<br>now</button>    
+    <button type="button" class="fline my-button">processing<br>Fee</button>    
+    <button type="button" class="fline my-button">Registration<br>fee</button>    
+    <button type="button" class="fline my-button">Agreement<br>&nbsp;&nbsp;</button> 
+    <br><br>
+    <button type="button" class="sline my-button">&nbsp;&nbsp;NOC&nbsp;&nbsp; <br>&nbsp;&nbsp;</button>    
+    <button type="button" class="sline my-button">Mechinary &<br>equipment</button>    
+    <button type="button" class="sline my-button">Interior<br>design</button>    
+    <button type="button" class="sline my-button">Product<br>order</button>  
+    </div>
+
+<!-- <<<<<<< main -->
+        </div>
+<!-- =======
+ -->
+
+<div class="container">
+        <div class="row" >
+            <div class="col-xl-4 col-md-4 col-6 dflex justify-content-around" style="text-align: left;"> <!-- Use col-12 to ensure columns don't stack on small screens -->
+                <button type="button" class="flx">
+                    <form method="post" style="text-align: left;">
+                        <input type="text" name="search" placeholder="Search by Name"><br>
+                        <button type="submit" style="background-color: aqua; cursor: pointer;">Search</button>
+                    </form>
+                </button>
+            </div>
+            
+            <div class="col-xl-4 col-md-4 col-sm-4 col-3 dflex justify-content-around" > <!-- Use col-12 here as well -->
+                <a href="adminallcheck.php"><button type="button">Manage Customer</button></a>
+            </div>
+            <div class="col-xl-4 col-md-4 col-sm-4 col-3 dflex justify-content-around dlx" > <!-- Use col-12 here as well -->
+                <a href="#"><button type="button">Previous Customer</button></a>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Outlet Type</th>
+                            <th>Budget</th>
+                            <th>Pincode</th>
+                            <th>registration price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (isset($result)) { ?>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td><?php echo $row['email']; ?></td>
+                                    <td><?php echo $row['phone']; ?></td>
+                                    <td><?php echo $row['city']; ?></td>
+                                    <td><?php echo $row['state']; ?></td>
+                                    <td><?php echo $row['outlet']; ?></td>
+                                    <td><?php echo $row['budget']; ?></td>
+                                    <td><?php echo $row['pincode']; ?></td>
+                                    <td><?php echo $row['regprice']; ?></td>
+                                    <td>
+                                        <form method="post" action="approve.php">
+                                            <input type="hidden" name="phone_number" value="<?php echo $row['phone']; ?>">
+                                            <button type="submit" name="approve" class="btn btn-primary">Approve</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -335,8 +580,13 @@ color:black;
 		</footer>' <script src="js/jquery.min.js"></script>
 		
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

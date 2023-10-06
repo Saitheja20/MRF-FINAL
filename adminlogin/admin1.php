@@ -1,76 +1,64 @@
-
 <?php
 
+// include 'admin.php';
+session_start();
+// Check if the user is not authenticated, redirect to login.php
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: login.php"); // Redirect to the login page
+    exit();
+}
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+// Check if the user is not authenticated, redirect to login page
 
-
+// Connect to the database
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
-// Check if the connection was successful
+// Check the connection
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
-
-$result = mysqli_query($con, $query);
-
-if (!empty($result)) {
-	while ($row = mysqli_fetch_assoc($result)) {
-		$un=$row['name'];
-		$phones=$row['phone'];
-		$name=$row['name'];
-		$applicationid = $phones;
-		$arr = str_split($applicationid,strlen($applicationid)/2);  
-		$email=$row['email'];
-		$phone=$row['phone'];
-		$city=$row['city'];
-		$state=$row['state'];
-		$outlet=$row['outlet'];
-		$budget=$row['budget'];
-		$pincode=$row['pincode'];
-
-
-		// echo "hello".$pincode;
-		// echo "<div>";
-		// echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
-	  
-	
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Name: "."</span>" .$row['name'] . "</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Phone: "."</span>" . $row['phone'] ."</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Email: "."</span>" . $row['email'] . "</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Address: "."</span>" .$row['city']. $row['state']."</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $row['budget']. "</h4>";
-		// echo "</div>";
-
-	}
-}
-
-
- else {
-	echo "Failed to execute the query: " . mysqli_error($con);
-}
-// Check if either of the queries was successful
-if ($result && mysqli_num_rows($result) > 0) {
-    // echo "Connection is successful saitheja";
-
+// Handle search functionality if provided
+if (isset($_POST['search'])) {
+    $searchTerm = $_POST['search'];
+    // Modify the query to include the search term
+    $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
+    $result = mysqli_query($con, $query);
 } else {
-    echo "Connection lost";
+    // If search is not provided, retrieve all records from registration
+    $query = "SELECT * FROM registration";
+    $result = mysqli_query($con, $query);
 }
 
+// Handle update functionality if the admin submits the edit form
+if (isset($_POST['update'])) {
+    $phone_number = $_POST['phone_number'];
+    $new_name = $_POST['new_name'];
+    $new_email = $_POST['new_email'];
+    $new_city = $_POST['new_city'];
+    $new_state = $_POST['new_state'];
+    $new_outlet = $_POST['new_outlet'];
+    $new_budget = $_POST['new_budget'];
+    $new_pincode = $_POST['new_pincode'];
+    $new_regprice = $_POST['new_regprice'];
 
-// mysqli_close($con);
-// echo $city;
+    // Update the record in the database
+    $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode', regprice='$new_regprice' WHERE phone='$phone_number'";
+    
+    if (mysqli_query($con, $updateQuery)) {
+        echo "Record updated successfully.";
+    } else {
+        echo "Error updating record: " . mysqli_error($con);
+    }
+}
 
-?> 
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-    <title>user login page</title>
-    <title>MRF Dealership | Apply for MRF Tyres Dealership Application | MRF Dealership  Apply 2023</title>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
@@ -93,7 +81,6 @@ if ($result && mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/style.css">
    
-
 </head>
 <body>
 <div class="wrap">
@@ -129,40 +116,66 @@ if ($result && mysqli_num_rows($result) > 0) {
 	        	<li class="nav-item"><a href="../index-2.html" class="nav-link">Franchise Opportunities</a></li>
 				<li class="nav-item"><a href="../index-3.html" class="nav-link">Franchise Benefits</a></li>
 	          <li class="nav-item"><a href="../contact.html" class="nav-link">Apply Online</a></li>
-            <li class="nav-item"><a href="../status.html" class="nav-link">Check Status</a></li>
-	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="../../status.html" class="nav-link">Check Status</a></li>
+	          <li class="nav-item"><a href="../../contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-<div style="text-align:center;margin:100px 0 100px 0;">
-<?php
-if ($result && mysqli_num_rows($result) > 0) {
-    echo "<h1>"."Hello...".$un."</h1>";
-	echo "<p>"."Let's get started by downloading the app. "."click the download icon"."</p>";
-
-	echo "<a href='../base.apk' download><img src='../download.svg' alt='download image' width='5%'></a>";
-
-} else {
-	echo "<h1>"."Oops you entered wrong credentials please try again"."</h1>";
-	echo "<a href='userlogin.html' >Login</a>";
-
-}
-
-
-
-?>
-</div>
-
-
-
-
-
-
-      <!-- ||||||||||||footer|||||||||||||||||| -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
+            <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
+            </div>
+        </div>
+    </div>
+    <form method="post" style="text-align:right; margin-right:5%;" >
+        <input type="text" name="search" placeholder="Search by Name">
+        <button type="submit" style="background-color:aqua;cursor: pointer;">Search</button>
+    </form>
+    <br>
+    <br>
+    <form method="post" action="">
+    <table border="1">
+        <thead class="thead">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Outlet Type</th>
+                <th>Budget</th>
+                <th>Pincode</th>
+                <th>registration price<th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td contenteditable="true"><?php echo $row['name']; ?></td>
+                    <td contenteditable="true"><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td contenteditable="true"><?php echo $row['city']; ?></td>
+                    <td contenteditable="true"><?php echo $row['state']; ?></td>
+                    <td contenteditable="true"><?php echo $row['outlet']; ?></td>
+                    <td contenteditable="true"><?php echo $row['budget']; ?></td>
+                    <td contenteditable="true"><?php echo $row['pincode']; ?></td>
+                    <td contenteditable="true"><?php echo $row['regprice']; ?></td>
+                    <td>
+                        <button type="button" onclick="updateRecord(this, '<?php echo $row['phone']; ?>')">Update</button>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    </form>
+     <!-- ||||||||||||footer|||||||||||||||||| -->
       
-<footer class="footer">
+     <footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
@@ -229,7 +242,95 @@ if ($result && mysqli_num_rows($result) > 0) {
 		</footer>' <script src="js/jquery.min.js"></script>
 		
 
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+
+    <script>
+        function updateRecord(button, phone_number) {
+            var row = button.parentNode.parentNode;
+            var cells = row.getElementsByTagName("td");
+
+            var new_name = cells[0].textContent;
+            var new_email = cells[1].textContent;
+            var new_city = cells[3].textContent;
+            var new_state = cells[4].textContent;
+            var new_outlet = cells[5].textContent;
+            var new_budget = cells[6].textContent;
+            var new_pincode = cells[7].textContent;
+            var new_regprice = cells[8].textContent;
+
+            var form = document.createElement("form");
+            form.method = "post";
+            form.style.display = "none";
+            
+            var phone_number_input = document.createElement("input");
+            phone_number_input.type = "hidden";
+            phone_number_input.name = "phone_number";
+            phone_number_input.value = phone_number;
+
+            var new_name_input = document.createElement("input");
+            new_name_input.type = "hidden";
+            new_name_input.name = "new_name";
+            new_name_input.value = new_name;
+
+            var new_email_input = document.createElement("input");
+            new_email_input.type = "hidden";
+            new_email_input.name = "new_email";
+            new_email_input.value = new_email;
+
+            var new_city_input = document.createElement("input");
+            new_city_input.type = "hidden";
+            new_city_input.name = "new_city";
+            new_city_input.value = new_city;
+
+            var new_state_input = document.createElement("input");
+            new_state_input.type = "hidden";
+            new_state_input.name = "new_state";
+            new_state_input.value = new_state;
+
+            var new_outlet_input = document.createElement("input");
+            new_outlet_input.type = "hidden";
+            new_outlet_input.name = "new_outlet";
+            new_outlet_input.value = new_outlet;
+
+            var new_budget_input = document.createElement("input");
+            new_budget_input.type = "hidden";
+            new_budget_input.name = "new_budget";
+            new_budget_input.value = new_budget;
+
+            var new_pincode_input = document.createElement("input");
+            new_pincode_input.type = "hidden";
+            new_pincode_input.name = "new_pincode";
+            new_pincode_input.value = new_pincode;
+            var new_regprice_input = document.createElement("input");
+            new_regprice_input.type = "hidden";
+            new_regprice_input.name = "new_regprice";
+            new_regprice_input.value = new_regprice;
+
+            var update_button = document.createElement("button");
+            update_button.type = "submit";
+            update_button.name = "update";
+            update_button.style.display = "none";
+
+            form.appendChild(phone_number_input);
+            form.appendChild(new_name_input);
+            form.appendChild(new_email_input);
+            form.appendChild(new_city_input);
+            form.appendChild(new_state_input);
+            form.appendChild(new_outlet_input);
+            form.appendChild(new_budget_input);
+            form.appendChild(new_pincode_input);
+            form.appendChild(new_regprice_input);
+            form.appendChild(update_button);
+            document.body.appendChild(form);
+
+            update_button.click();
+        }
+    </script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- <script src="js/jquery.min.js"></script> -->
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -246,9 +347,6 @@ if ($result && mysqli_num_rows($result) > 0) {
   <script src="js/scrollax.min.js"></script>
   <script src="external08e7.html"></script>
   <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
-
-
+  <script src="js/main.js"></script>    
 </body>
 </html>

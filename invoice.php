@@ -2,10 +2,9 @@
 // include 'status.php';
 
 
-// Start the session (make sure to start the session in file2.php as well)
 session_start();
 
-// Access the stored variables from the session
+
 $un = $_SESSION['un'];
 $phone = $_SESSION['phone'];
 $email = $_SESSION['email'];
@@ -14,10 +13,13 @@ $state = $_SESSION['state'];
 $budget = $_SESSION['budget'];
 $outlet = $_SESSION['outlet'];
 $pincode = $_SESSION['pincode'];
-$applicationid = $_SESSION['applicationid'];
+$application_id = $_SESSION['application_id'];
+$application_status = $_SESSION['application_status'];
+$regdate =$_SESSION['regdate'];
+$regprice=$_SESSION['regprice'];
+$Total = "Not Approved";
 
-// Now you can use these variables in file2.php
-// For example, you can echo them to display the data or perform other operations
+
 // echo "Name: $un<br>";
 // echo "Phone: $phone<br>";
 // echo "Email: $email<br>";
@@ -27,7 +29,31 @@ $applicationid = $_SESSION['applicationid'];
 // echo "Outlet: $outlet<br>";
 // echo "Pincode: $pincode<br
 // echo "application id : $applicationid<br>";
+// if(regprice!=0 && regprice!= "not approved"){
+// $gst=(18*regprice)/100;
+// }
+// else{
+//     $gst="not approved";
+// }
 
+// $Total = $regprice + $gst;
+
+// Check if the 'regprice' key exists in the session
+if(isset($_SESSION['regprice'])) {
+    $regprice = $_SESSION['regprice'];
+
+    // Check if 'regprice' is not equal to 0 and not equal to the string "not approved"
+    if($regprice != 0 && $regprice != "not approved") {
+        $gst = (18 * $regprice) / 100;
+        $Total = $regprice + $gst;
+    } else {
+        $gst = "not approved";
+    }
+   
+} else {
+    // Handle the case where 'regprice' is not set in the session
+    echo "Session variable 'regprice' is not set.";
+}
 
 
 ?>
@@ -63,10 +89,17 @@ $applicationid = $_SESSION['applicationid'];
                 <p><b><?php echo $email ?></b></p>
             </div>
             <div class="col-md-6">
+<!-- <<<<<<< main -->
+                <p>Invoice: <?php echo $application_id ?></p>
+                <p>Date: <?php echo date("Y-m-d"); ?></p>
+                <p>Status:<?php echo $application_status ?></p>
+                <p>Application: <?php echo $application_id ?></p>
+<!-- ======= -->
                 <p>Invoice: <?php echo $applicationid ?></p>
                 <p>Date: <?php echo date("Y-m-d"); ?></p>
                 <p>Status:</p>
                 <p>Application: <?php echo $applicationid ?></p>
+<!-- >>>>>>> touhidbackend -->
             </div>
         </div>
         <table class="table" border="1">
@@ -79,6 +112,17 @@ $applicationid = $_SESSION['applicationid'];
             <tbody>
                 <tr>
                     <td>Registration Fee</td>
+<!-- <<<<<<< main -->
+                    <td>&nbsp; <?php echo $regprice ?></td>
+                </tr>
+                <tr>
+                    <td>18% GST for Indian Residents only</td>
+                    <td>&nbsp;<?php echo $gst ?></td>
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td class="t"><b>&nbsp;<?php echo $Total ?></b></td>
+<!-- ======= -->
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -88,6 +132,7 @@ $applicationid = $_SESSION['applicationid'];
                 <tr>
                     <td>TOTAL</td>
                     <td class="t"><b>&nbsp;15487</b></td>
+<!-- >>>>>>> touhidbackend -->
                 </tr>
             </tbody>
         </table>
