@@ -122,9 +122,12 @@ if (isset($_POST['update'])) {
             <div class="col">
             <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
 <!-- <<<<<<< second
-======= -->
+
             <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
 <!-- >>>>>>> main -->
+=======
+            <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
+
             </div>
         </div>
     </div>

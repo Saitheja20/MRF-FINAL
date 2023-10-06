@@ -89,10 +89,17 @@ if(isset($_SESSION['regprice'])) {
                 <p><b><?php echo $email ?></b></p>
             </div>
             <div class="col-md-6">
+<!-- <<<<<<< main -->
                 <p>Invoice: <?php echo $application_id ?></p>
                 <p>Date: <?php echo date("Y-m-d"); ?></p>
                 <p>Status:<?php echo $application_status ?></p>
                 <p>Application: <?php echo $application_id ?></p>
+<!-- ======= -->
+                <p>Invoice: <?php echo $applicationid ?></p>
+                <p>Date: <?php echo date("Y-m-d"); ?></p>
+                <p>Status:</p>
+                <p>Application: <?php echo $applicationid ?></p>
+<!-- >>>>>>> touhidbackend -->
             </div>
         </div>
         <table class="table" border="1">
@@ -105,6 +112,7 @@ if(isset($_SESSION['regprice'])) {
             <tbody>
                 <tr>
                     <td>Registration Fee</td>
+<!-- <<<<<<< main -->
                     <td>&nbsp; <?php echo $regprice ?></td>
                 </tr>
                 <tr>
@@ -114,6 +122,17 @@ if(isset($_SESSION['regprice'])) {
                 <tr>
                     <td>TOTAL</td>
                     <td class="t"><b>&nbsp;<?php echo $Total ?></b></td>
+<!-- ======= -->
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>18% GST for Indian Residents only</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td class="t"><b>&nbsp;15487</b></td>
+<!-- >>>>>>> touhidbackend -->
                 </tr>
             </tbody>
         </table>

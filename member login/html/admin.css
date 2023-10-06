@@ -1,6 +1,9 @@
+/* <<<<<<< main */
 /* <<<<<<< second
 ======= */
-
+/* ======= */
+/* >>>>>>> touhidbackend
+ */
 @media screen and(min-width:300px) and (max-width:600px){
     .lapvisible {
         display:none;
@@ -15,8 +18,11 @@
 
 
 
+/* 
 
 /* >>>>>>> main */
+
+
 table{
     text-align: center;
 }
@@ -59,5 +65,8 @@ a:hover{
 
 
 
+/* <<<<<<< main */
 /* >>>>>>> main
  */
+/* ======= */
+/* >>>>>>> touhidbackend */

@@ -181,12 +181,26 @@ if ($application_status == "approved") {
 
 ?>
 <!-- <<<<<<< main -->
+<!-- <<<<<<< main -->
+
+</div><?php
+if ($application_status == "approved") {
+?>
+<div class="button" style="text-align:center; cursor: pointer;">
+   <a href="invoice.php"><button style="background-color: green;">Get Invoice</button></a>
+   <a href='../base.apk' download><button style="background-color: green;">Business app</button></a>
+   <a href=""><button style="background-color: green;">Contact US</button></a>
+<!-- >>>>>>> touhidbackend -->
 </div>
-<div class="button">
-   <a href="invoice.php" ><button >Get Invoice</button></a>
-  <a href='../base.apk' download>  <button >Business app</button></a>
-  <a href="" > <button>Contact US</button></div></a> 
+<?php
+} else {
+?>
+<h4 style="text-align:center; color:red">application status: not approved</h4>
+<?php
+}
+?>
 </div>
+
 <!-- ======= -->
             echo "<h4 style= 'color: black'>". "<span  style= 'color: #0000FF'>". "Application For business Types:- "."</span>". $outlet. "</h4>";
 <!-- >>>>>>> main
@@ -227,6 +241,7 @@ if ($application_status == "approved") {
 
 
  -->
+
 <footer class="footer">
 			<div class="container">
 				<div class="row">
