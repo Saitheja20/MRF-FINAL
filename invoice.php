@@ -2,10 +2,9 @@
 // include 'status.php';
 
 
-// Start the session (make sure to start the session in file2.php as well)
 session_start();
 
-// Access the stored variables from the session
+
 $un = $_SESSION['un'];
 $phone = $_SESSION['phone'];
 $email = $_SESSION['email'];
@@ -20,8 +19,7 @@ $regdate =$_SESSION['regdate'];
 $regprice=$_SESSION['regprice'];
 $Total = "Not Approved";
 
-// Now you can use these variables in file2.php
-// For example, you can echo them to display the data or perform other operations
+
 // echo "Name: $un<br>";
 // echo "Phone: $phone<br>";
 // echo "Email: $email<br>";

@@ -12,13 +12,26 @@ $budget = $_POST['budget'];
 $pincode = $_POST['pincode'];
 $password =$_POST['phone'];
 $arr="";
+
+$application_id = $phone;
+$arr = str_split($application_id,strlen($application_id)/2);  
+$application_id = "MRF-f".date("Ym").$arr[0];
+
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '','$application_id')";
+
 $application_status = "Not approved";
 $application_id = $phone;
 $arr = str_split($application_id,strlen($application_id)/2);  
 $application_id = "MRF-f".date("Ymd").$arr[0];
 $regdate= "".date("Y/m/d");
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+// <<<<<<< main
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate')";
+
+// =======
 $query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate','')";
+// >>>>>>> saibackend
 $result = mysqli_query($con, $query);
 
 require 'vendor/autoload.php'; // Include PHPMailer library

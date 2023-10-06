@@ -1,25 +1,25 @@
 <?php
-// Connect to the database
+
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
-// Check the connection
+
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Handle search functionality if provided
+
 if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    // Modify the query to include the search term
+   
     $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
     $result = mysqli_query($con, $query);
 } else {
-    // If search is not provided, retrieve all records from registration
+    
     $query = "SELECT * FROM registration";
     $result = mysqli_query($con, $query);
 }
 
-// Handle update functionality if the admin submits the edit form
+
 if (isset($_POST['update'])) {
     $phone_number = $_POST['phone_number'];
     $new_name = $_POST['new_name'];
@@ -31,8 +31,13 @@ if (isset($_POST['update'])) {
     $new_pincode = $_POST['new_pincode'];
     $new_regprice = $_POST['new_regprice'];
 
+// <<<<<<< main
+   
+    $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode' WHERE phone='$phone_number'";
+// =======
     // Update the record in the database
     $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode', regprice='$new_regprice' WHERE phone='$phone_number'";
+// >>>>>>> saibackend
     
     if (mysqli_query($con, $updateQuery)) {
         echo "Record updated successfully.";
@@ -116,7 +121,10 @@ if (isset($_POST['update'])) {
         <div class="row">
             <div class="col">
             <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
+<!-- <<<<<<< second
+======= -->
             <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
+<!-- >>>>>>> main -->
             </div>
         </div>
     </div>
