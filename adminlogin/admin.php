@@ -1,70 +1,121 @@
 
 <?php
+// session_start();
+
+// // // Check if the user is not authenticated, redirect to login page
+// // if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+// //     header("Location: admin.html"); // Redirect to the login page
+// //     exit(); // Stop executing the rest of the code
+// // }
+
+// $email = $_POST['email'];
+// $password = $_POST['password'];
+
+// // Create a database connection
+// $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+// // Check if the connection was successful
+// if (!$con) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+
+// $query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
+
+// $result = mysqli_query($con, $query);
+
+// if (!empty($result)) {
+// 	$_SESSION['authenticated'] = true;
+// 	// header("Location: admin1.php");
+//     // exit;
+// 	while ($row = mysqli_fetch_assoc($result)) {
+
+// 		$un=$row['name'];
+// 		$phones=$row['phone'];
+// 		$name=$row['name'];
+// 		$applicationid = $phones;
+// 		$arr = str_split($applicationid,strlen($applicationid)/2);  
+// 		$email=$row['email'];
+// 		$phone=$row['phone'];
+// 		$city=$row['city'];
+// 		$state=$row['state'];
+// 		$outlet=$row['outlet'];
+// 		$budget=$row['budget'];
+// 		$pincode=$row['pincode'];
 
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-
-$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
-
-// Check if the connection was successful
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-$query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
-
-$result = mysqli_query($con, $query);
-
-if (!empty($result)) {
-	while ($row = mysqli_fetch_assoc($result)) {
-		$un=$row['name'];
-		$phones=$row['phone'];
-		$name=$row['name'];
-		$applicationid = $phones;
-		$arr = str_split($applicationid,strlen($applicationid)/2);  
-		$email=$row['email'];
-		$phone=$row['phone'];
-		$city=$row['city'];
-		$state=$row['state'];
-		$outlet=$row['outlet'];
-		$budget=$row['budget'];
-		$pincode=$row['pincode'];
-
-
-		// echo "hello".$pincode;
-		// echo "<div>";
-		// echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
+// 		// echo "hello".$pincode;
+// 		// echo "<div>";
+// 		// echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
 	  
 	
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Name: "."</span>" .$row['name'] . "</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Phone: "."</span>" . $row['phone'] ."</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Email: "."</span>" . $row['email'] . "</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Address: "."</span>" .$row['city']. $row['state']."</h4>";
-		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $row['budget']. "</h4>";
-		// echo "</div>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Name: "."</span>" .$row['name'] . "</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Phone: "."</span>" . $row['phone'] ."</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Email: "."</span>" . $row['email'] . "</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>"."Address: "."</span>" .$row['city']. $row['state']."</h4>";
+// 		// echo "<h4 style= 'color: #787878'>". "<span  style= 'color: #0000FF'>". "Budget: "."</span>". $row['budget']. "</h4>";
+// 		// echo "</div>";
+	
+// 	}
+// }
 
-	}
+
+//  else {
+// 	echo "Failed to execute the query: " . mysqli_error($con);
+// }
+// // Check if either of the queries was successful
+// if ($result && mysqli_num_rows($result) > 0) {
+//     // echo "Connection is successful saitheja";
+// 	$_SESSION['authenticated'] = true;
+
+// } else {
+//     echo "Connection lost";
+// }
+
+// // Close the database connection
+// // mysqli_close($con);
+// // echo $city;
+// if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+//     header("Location: admin1.php"); // Redirect to the login page
+//     exit(); // Stop executing the rest of the code
+// }
+
+session_start();
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Create a database connection
+    $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+
+    // Check if the connection was successful
+    if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $query = "SELECT * FROM registration WHERE email LIKE '%$email%' AND phone LIKE '%$password%'";
+
+    $result = mysqli_query($con, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $_SESSION['authenticated'] = true;
+    } else {
+        echo "Incorrect login credentials. Please try again.";
+    }
+
+    // Close the database connection
+    mysqli_close($con);
+}
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: userlogin.html"); // Redirect to the login page
+    exit(); // Stop executing the rest of the code
 }
 
 
- else {
-	echo "Failed to execute the query: " . mysqli_error($con);
-}
-// Check if either of the queries was successful
 if ($result && mysqli_num_rows($result) > 0) {
-    // echo "Connection is successful saitheja";
 
-} else {
-    echo "Connection lost";
-}
-
-
-// mysqli_close($con);
-// echo $city;
-
-?> 
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +126,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Apply for MRF tyres dealership and franchise in India. Get mrf distributorship. Apply Online for tyres franchise.">
     <meta name="keywords" content="MRF Tyres Dealership, MRF Tyres Franchise, Mrf Tyres Dealership Application, MRF Tyres Dealership Apply, mrf tyres franchise apply online" >
-    <link href="external2fbb.html" rel="stylesheet">
+    <link href="external2fbb.html" rel="stylesheet">	
     <link href="externalf197.html" rel="stylesheet">
     <meta name="description" content="MRF Tyres is looking for MRF Tyres Dealership partner in India. We, an MRF Dealership chain is inviting MRF Tyres Dealership application.">
     <meta name="keywords" content="MRF Dealership, MRF Tyres Dealership, MRF Tyres Franchise">
@@ -91,7 +142,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
     <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
    
 
 </head>
@@ -142,7 +193,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "<h1>"."Hello...".$un."</h1>";
 	echo "<p>"."Let's get started by downloading the app. "."click the download icon"."</p>";
 
-	echo "<a href='../base.apk' download><img src='../download.svg' alt='download image' width='5%'></a>";
+	echo "<a href='admin1.php'><img src='../download.svg' alt='download image' width='5%'></a>";
 
 } else {
 	echo "<h1>"."Oops you entered wrong credentials please try again"."</h1>";
@@ -252,3 +303,6 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 </body>
 </html>
+<?php
+}
+?>

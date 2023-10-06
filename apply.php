@@ -12,13 +12,95 @@ $budget = $_POST['budget'];
 $pincode = $_POST['pincode'];
 $password =$_POST['phone'];
 $arr="";
+// <<<<<<< main
+
+// =======
+$application_status = "Not approved";
+// >>>>>>> touhidbackend
 $application_id = $phone;
 $arr = str_split($application_id,strlen($application_id)/2);  
-$application_id = "MRF-f".date("Ym").$arr[0];
-
+$application_id = "MRF-f".date("Ymd").$arr[0];
+$regdate= "".date("Y/m/d");
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+// <<<<<<< main
 $query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '','$application_id')";
+
+$application_status = "Not approved";
+$application_id = $phone;
+$arr = str_split($application_id,strlen($application_id)/2);  
+$application_id = "MRF-f".date("Ymd").$arr[0];
+$regdate= "".date("Y/m/d");
+$con = mysqli_connect('localhost', 'root', '', 'mrftyres');
+// <<<<<<< main
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate')";
+
+// =======
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate','')";
+// >>>>>>> saibackend
+// =======
+$query = " insert into registration values('$name','$email','$phone','$city','$state','$outlet','$budget','$pincode','', '$application_status','$application_id','$regdate')";
+// >>>>>>> touhidbackend
 $result = mysqli_query($con, $query);
+
+require 'vendor/autoload.php'; // Include PHPMailer library
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer(true);
+
+// $to = $email;
+// $subject = 'Registration Confirmation';
+// $message = "Hello $name,\n\nThank you for registering with us!\n\nWe look forward to working with you.\n\nBest regards,\nYour Company Name";
+
+// $headers = 'From: info@mrftyrefranchises.com' . "\r\n" .
+// 	'Reply-To: info@mrftyrefranchises.com' . "\r\n" .
+// 	'X-Mailer: PHP/' . phpversion();
+
+// // Send the email
+// mail($to, $subject, $message, $headers);
+
+
+try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.hostinger.com'; // Your SMTP server
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'info@mrftyrefranchises.com'; // Your email address
+    $mail->Password   = 'Mrf@7848'; // Your email password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS or SSL
+    $mail->Port       = 465; // Port number (usually 587 for TLS or 465 for SSL)
+
+    // Recipient
+    $mail->setFrom('info@mrftyrefranchises.com', 'Admin@MRF');
+    $mail->addAddress($email, $name); // Email recipient
+
+    // Email content
+    $mail->isHTML(true);
+    $mail->Subject = 'Registration Confirmation';
+    $mail->Body    = 'Hello' $name',\n\nThank you for registering with us!\n\nWe look forward to working with you.\n\nBest regards,\nYour Company Name';
+
+    // Send email
+    $mail->send();
+    echo 'Email has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+Make sure to replace 'smtp.example.com', 'your_email@example.com', and 'your_password' with your actual SMTP server, email address, and password provided by Hostinger.
+
+Testing: Test your email sending functionality to make sure it works as expected.
+
+SPF and DKIM Records: Consider adding SPF (Sender Policy Framework) and DKIM (DomainKeys Identified Mail) records to your DNS settings to improve email deliverability and reduce the chances of your emails being marked as spam. Hostinger may provide guidance on how to set up these records in their control panel.
+
+Monitoring: Monitor your email deliverability and check for any email-related issues regularly.
+
+Keep in mind that sending emails from a web server can sometimes be challenging due to spam filters and various email server configurations. If you encounter issues, you may need to contact Hostinger support for further assistance.
+
+
+
+
+
+
 
 if($result){
     // echo "data inserted successfully";

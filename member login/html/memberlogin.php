@@ -53,11 +53,11 @@ if (!$stmt) {
         echo "Failed to execute the query: " . mysqli_error($con);
     }
 
-    // Close the statement
+
     mysqli_stmt_close($stmt);
 }
 
-// Close the database connection
+
 mysqli_close($con);
 ?>
 <!DOCTYPE html>
