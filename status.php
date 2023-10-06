@@ -28,8 +28,12 @@ if (!$con) {
             $outlet=$row['outlet'];
             $budget=$row['budget'];
             $pincode=$row['pincode'];
-            $application_status=$row['application_status'];
+           
+            $registration_date=$row['registration_date'];
+            $regprice=$row['regprice'];
 
+            $application_id=$row['application_id'];
+            $application_status=$row['application_status'];
             // echo "hello".$pincode;
             // echo "<div>";
             // echo "<h4 style= 'color: #787878'>"."<span  style= 'color: #0000FF'>"."Applicaion id: "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
@@ -70,8 +74,10 @@ $_SESSION['state'] = $state;
 $_SESSION['budget'] = $budget;
 $_SESSION['outlet'] = $outlet;
 $_SESSION['pincode'] = $pincode; // Assuming you have a variable named $pincode
-$_SESSION['applicationid']= $applicationid;
-
+$_SESSION['application_id']= $application_id;
+$_SESSION['registration_date']=$registration_date;
+$_SESSION['application_status']=$application_status;
+$_SESSION['regprice']=$regprice;
     mysqli_close($con);
 
 ?>
@@ -135,8 +141,17 @@ $_SESSION['applicationid']= $applicationid;
 
 <div style="text-align:center;display: block;justify-content: left;border: solid 2px red;">
         <?php
-echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>";
-echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion status: "."</span>".$application_status."</h4>";
+echo "<div style='font-family: 'Merriweather', serif;font-weight:bold;'>"; 
+
+?>
+<?php
+if ($application_status == "approved") {
+    echo "<h4 style='color: green;'>" . "<span style='color: #0000FF'>" . "Application status: " . "</span>" . $application_status . "</h4>";
+} else {
+    echo "<h4 style='color: red;'>" . "<span style='color: #0000FF'>" . "Application status: " . "</span>" . $application_status . "</h4>";
+}
+?>
+<?php
 
             echo "<h4 style= 'color: black;'>"."<span  style= 'color: #0000FF'>"."Applicaion id:- "."</span>"."MRF-f/".date("Ymd").$arr[0]."</h4>";
           
@@ -165,6 +180,7 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
 // <<<<<<< second
 
 ?>
+<!-- <<<<<<< main -->
 </div>
 <div class="button">
    <a href="invoice.php" ><button >Get Invoice</button></a>
@@ -176,10 +192,27 @@ echo "<h4 style= 'color: red;'>"."<span  style= 'color: #0000FF'>"."Applicaion s
 <!-- >>>>>>> main
  -->
             echo "</div>";
+<!-- 
+<!-- <<<<<<< second -->
+<!-- ======= -->
 
-<!-- <<<<<<< second
 ======= -->
-
+</div><?php
+if ($application_status == "approved") {
+?>
+<div class="button" style="text-align:center; cursor: pointer;">
+   <a href="invoice.php"><button style="background-color: green;">Get Invoice</button></a>
+   <a href='../base.apk' download><button style="background-color: green;">Business app</button></a>
+   <a href=""><button style="background-color: green;">Contact US</button></a>
+</div>
+<?php
+} else {
+?>
+<h4 style="text-align:center; color:red">application status: not approved</h4>
+<?php
+}
+?>
+<!-- >>>>>>> saibackend -->
 
 
 ?>

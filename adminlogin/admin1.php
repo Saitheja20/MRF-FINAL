@@ -1,25 +1,36 @@
 <?php
 
+// include 'admin.php';
+session_start();
+// Check if the user is not authenticated, redirect to login.php
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    header("Location: login.php"); // Redirect to the login page
+    exit();
+}
+
+// Check if the user is not authenticated, redirect to login page
+
+// Connect to the database
 $con = mysqli_connect('localhost', 'root', '', 'mrftyres');
 
-
+// Check the connection
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
+// Handle search functionality if provided
 if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-   
+    // Modify the query to include the search term
     $query = "SELECT * FROM registration WHERE name LIKE '%$searchTerm%' OR phone LIKE '%$searchTerm%'";
     $result = mysqli_query($con, $query);
 } else {
-    
+    // If search is not provided, retrieve all records from registration
     $query = "SELECT * FROM registration";
     $result = mysqli_query($con, $query);
 }
 
-
+// Handle update functionality if the admin submits the edit form
 if (isset($_POST['update'])) {
     $phone_number = $_POST['phone_number'];
     $new_name = $_POST['new_name'];
@@ -31,13 +42,8 @@ if (isset($_POST['update'])) {
     $new_pincode = $_POST['new_pincode'];
     $new_regprice = $_POST['new_regprice'];
 
-// <<<<<<< main
-   
-    $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode' WHERE phone='$phone_number'";
-// =======
     // Update the record in the database
     $updateQuery = "UPDATE registration SET name='$new_name', email='$new_email', city='$new_city', state='$new_state', outlet='$new_outlet', budget='$new_budget', pincode='$new_pincode', regprice='$new_regprice' WHERE phone='$phone_number'";
-// >>>>>>> saibackend
     
     if (mysqli_query($con, $updateQuery)) {
         echo "Record updated successfully.";
@@ -98,7 +104,7 @@ if (isset($_POST['update'])) {
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index-2.html"><img src="../../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
+	    	<a class="navbar-brand" href="index-2.html"><img src="../images/logo.png" class="mrf tyres distributorship"width="250" height=></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -121,10 +127,7 @@ if (isset($_POST['update'])) {
         <div class="row">
             <div class="col">
             <h1 style="text-align:center;color:blue;border: 2px solid red; background-color:aqua;">Admin Panel</h1>
-<!-- <<<<<<< second
-======= -->
             <p style="text-align:center;color:black;">change you customers data by choosing the right coloumn in table</p>
-<!-- >>>>>>> main -->
             </div>
         </div>
     </div>
